@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/Dariellysantos/hotel-management-service/issues"
   },
-  "homepage": "https://github.com/Dariellysantos/hotel-management-service#readme"
+  "homepage": "https://github.com/Dariellysantos/hotel-management-service#readme",
+  "dependencies": {
+    "nodemon": "^3.1.4"
+  }
 }
