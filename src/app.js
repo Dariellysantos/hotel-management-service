@@ -5,13 +5,17 @@ const cors = require("cors");
 require("dotenv").config();
 const db = require("./database/mongoConfig");
 
+
 const userRoutes = require("./routes/userRoutes");
+const loginRouter = require("./routes/loginRouter");
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
-app.use("/hotelManagement", userRoutes);
+app.use("/user", userRoutes);
+app.use("/login", loginRouter);
+
 
 db.connect();
 
