@@ -12,17 +12,13 @@ const MONGODB_URI =
 
   const connect = async () => {
     try {
-      await mongoose.connect(MONGODB_URI, {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-      });
-      console.log("Banco conectado (:");
+      await mongoose.connect(MONGODB_URI);
+       console.log("Banco conectado (:");
     } catch (error) {
       console.log("Erro: ", error.message);
     }
   };
   
-  console.log(MONGODB_URI);
   
   module.exports = {
     connect,
