@@ -29,13 +29,13 @@ const createUser = async (req, res) => {
         return res.status(201).json({
             message: "User registered successfully!",
             sevedUser,
-          });
+        });
 
     } catch (error) {
         res.status(500).json({
             message: "Internal error.",
             code: "INTERNAL_SERVER_ERROR",
-          });
+        });
     }
 };
 
@@ -68,7 +68,18 @@ const getById = async (req, res) => {
         const user = req.params.id;
         let found = await UserSchema.findById(user);
 
-        res.status(200).json(found);
+        if (!found) {
+            return res.status(404).json({
+                message: "User not found.",
+                code: "NOT_FOUND_ERROR",
+            });
+        }
+
+        res.status(200).json({
+            message: "User found!",
+            code: "SUCCESS",
+            body: found,
+        });
     } catch (error) {
         if (user === undefined)
             res.status(500).json({
