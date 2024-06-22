@@ -30,10 +30,23 @@ const createUser = async (req, res) => {
 const getAll = async (req, res) => {
     try {
         const users = await UserSchema.find();
-        res.status(200).json(users);
+
+        if (users.length === 0) {
+            return res.status(404).json({
+                message: "User not found.",
+                code: "NOT_FOUND_ERROR",
+            });
+        }
+
+        return res.status(200).json({
+            message: "Post seved successfully!",
+            code: "SUCCESS",
+            data: users,
+        });
     } catch (error) {
         res.status(500).json({
-            message: error.message,
+            message: "Internal error.",
+            code: "INTERNAL_SERVER_ERROR",
         });
     }
 };
