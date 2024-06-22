@@ -37,8 +37,23 @@ const createUser = async (req, res) => {
       });
     }
   };
+
+  const getById = async (req, res) => {
+    try {
+      const user = req.params.id;
+      let found = await UserSchema.findById(user);
+  
+      res.status(200).json(found);
+    } catch (error) {
+      if (user === undefined)
+        res.status(500).json({
+          message: error.message,
+        });
+    }
+  };
   
 module.exports = {
     createUser,
-    getAll
+    getAll,
+    getById
 };
