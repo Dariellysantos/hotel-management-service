@@ -15,7 +15,7 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  Birthday: {
+  birthday: {
     type: String,
     required: true,
   },
@@ -28,7 +28,7 @@ const userSchema = new mongoose.Schema({
     required: true,
   },
   country: {
-    type: Number,
+    type: String,
     required: true,
   },
   createdAt: {
