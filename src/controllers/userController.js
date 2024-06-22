@@ -14,16 +14,28 @@ const createUser = async (req, res) => {
             country: req.body.country,
         });
 
+        if (
+            newUser.email === "" ||
+            newUser.email.indexOf("@") < 0 ||
+            newUser.email.indexOf(".com") < 0
+        ) {
+            return res.status(400).json({
+                message: "Empty or invalid email.",
+                code: "ERROR_INVALID_EMAIL",
+            });
+        }
         const sevedUser = await newUser.save();
 
-        res.status(200).json({
-            message: "user successfully registered!",
+        return res.status(201).json({
+            message: "User registered successfully!",
             sevedUser,
-        });
+          });
+
     } catch (error) {
         res.status(500).json({
-            message: error.message,
-        });
+            message: "Internal error.",
+            code: "INTERNAL_SERVER_ERROR",
+          });
     }
 };
 
