@@ -4,6 +4,8 @@ const router = express.Router();
 const controller = require("../controllers/bookingController");
 
 router.post("/", controller.createBooking);
+ router.post("/bookingList", controller.bookingListByDate);
+
 
 
 module.exports = router;
