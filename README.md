@@ -24,6 +24,9 @@
 - [x] Dotenv-safe version
 - [x] Cors
 - [x] Nodemon version 
+- [x] Jest
+- [x] Node-mocks-http
+- [x] Mockingoose
 
 
 ## **Instruções para instalação e contribuições no projeto**
