@@ -1,5 +1,5 @@
 # hotel-management-service
-
+### Aplicação de gerenciamento de Hóspedes de um Hotel e suas reservas.
 ## **Funcionalidades**
 
 - [x] Login
@@ -16,11 +16,21 @@
 ## **Tecnologias, bibliotecas e dependências**
 
 
+- [x] Git version
+- [x] Node version
+- [x] npm version
+- [x] Express version
+- [x] Mongoose version
+- [x] Dotenv-safe version
+- [x] Cors
+- [x] Nodemon version 
+
+
 ## **Instruções para instalação e contribuições no projeto**
 
 <br>
 
-- Faça um `fork` do projeto através do link [API Achei um pet](https://github.com/Dariellysantos/achei-um-pet-service/fork).
+- Faça um `fork` do projeto através do link [Hotel manegement](https://github.com/Dariellysantos/hotel-management-service.git).
 
 - Copie o código do _fork_ realizado e, no _prompt de comando_ da sua máquina, realize o clone do projeto através do `git clone <link_do_fork_do_repositorio>`;
 
@@ -28,7 +38,7 @@
 
 - Instale as dependências necessárias à execução da API através do comando `npm install`;
 
-- No raiz do projeto, renomeie `.env.example` para `.env` e adicione os valores das variáveis `PORT` (porta sugerida `8080`), `MONGODB_URL` (string de conexão com o banco de dados) e `SECRET` (chave RSA). Elas são necessárias para a execução da API em sua máquina
+- No raiz do projeto, renomeie `.env.example` para `.env` e adicione os valores das variáveis `PORT` (porta sugerida `2323`), `MONGODB_URL` (string de conexão com o banco de dados) e `SECRET` (chave RSA). Elas são necessárias para a execução da API em sua máquina
 
 - Para executar a API, utilize o comando `npm start` no seu terminal;
 
@@ -41,21 +51,79 @@
 
 ## **Features e rotas**
 
-Esta API está sendo escutada na `porta 3000` e para que todas as rotas possam ser acessadas localmente é necessário usar `http://localhost:3000/` ou `https://achei-um-pet-service.herokuapp.com/` antes dos endpoints de requisição.
+Esta API está sendo escutada na `porta 2323` e para que todas as rotas possam ser acessadas localmente é necessário usar `http://localhost:2323/` 
 
-### _Manipulando registros como pessoa usuária_
+### _Documentação das rotas_
 
-| Feature                                | Método | Rota | Exemple Value Model                       |
+| Feature                                | Método | Rota |                          |
 | -------------------------------------- | ------ | ---------------------------- |----------------|
-| Login                                  | POST   | `/login`                     |                       |
-| Cadastro de usuario                    | POST   | `/users`                     |
-| Feed                                   | PUT    | `/posts`                     |
-| Postagem detalhada                     | GET    | `/posts/:id`                 |
-| UP (Curtida)                           | GET    | `/posts/:id/up`              |
-| Ajudar um caso                         | GET    | `/posts/:id/help`            |
-| Cadastra animais de rua                | POST   | `/posts/post`                |
-| Visualizar postagens de um usuario     | POST   | `/users/:id/posts`           |
-| Buscar usuario                         | GET    | `/users/:id/user`            |
-| Buscar proximo a localidade do usuário | GET    | ` /posts?postalCodeFilter=5` |
-| Atualizar cadastro                     | PATCH  | ` /posts/:id/update`         |
-| Apagar postagem feita                  | DELETE | `/posts/user/:id/post/:id`   |
+| Login                                  | POST   | `/login`| 
+    {
+        "login" :"fulana@email.com.br",
+         "password": "Teeer4"
+    }
+ |                                 |  |  |                     |
+| -------------------------------------- | ------ | ---------------------------- |----------------|                                        
+| Cadastro de usuario                    | POST   | `/user`  
+    {
+        "name": "fulane de Tal",
+        "email": "fune@email.com.br",
+        "birthday": "23/04/1992",
+        "password": "Teeer44",
+        "state": " “Minas Gerais",
+        "city": " “Contagem",
+        "country": "Brasil"
+    }
+                  
+|                                 |  |  |                     |
+| -------------------------------------- | ------ | ---------------------------- |----------------|  
+ Lista usuario ID                                   | GET    | `/user/:id`                     |
+| Lista de usuario                     | GET    | `/user`                 |
+| Alterar dados usuario                           | PATCH    | `/user/:id`              | 
+    {
+        "name": "fulane de Tal",
+        "email": "fune@email.com.br",
+        "birthday": "23/04/1992",
+        "password": "Teeer44",
+        "state": " “Minas Gerais",
+        "city": " “Contagem",
+        "country": "Brasil"
+    }
+    
+
+|                                 |  |  |                     |
+| -------------------------------------- | ------ | ---------------------------- |----------------|
+Deletar cadastro usuario                         | DELETE    | `/user/:id`            |
+|Cadastro de reserva     | POST   | `/booking`         
+    {
+        "name": "GH",
+        "emailClient": "fune@email.com.br",
+        "roomNumber": "631",
+        "amountToPay": 1000.80,
+        "dateOfStay": [
+            "12/10/2024",
+            "20/10/2024"
+        ],
+        "status": "CONFIRMADO"
+    }
+
+|                                 |  |  |                     |
+| -------------------------------------- | ------ | ---------------------------- |----------------|
+  |
+ Lista de reservar por data das reservas                         | POST    | `/booking`            
+ 
+    {
+        "checkin": "11/10/2024",
+        "checkout": "23/10/2024"
+    }
+|                                 |  |  |                     |
+| -------------------------------------- | ------ | ---------------------------- |----------------|
+  |
+|Alterar status da reserva por Id | PUT    | ` /booking/:id` 
+   
+        {
+            "status": "CHECK-OUT"
+        }
+   
+   <br>Criado com por **Darielly Santos** <br>
+[![Linkedin Badge](https://img.shields.io/badge/-Darielly%20Santos-blue?style=flat-square&logo=Linkedin&logoColor=white)](https://www.linkedin.com/in/darielly-santos/)
