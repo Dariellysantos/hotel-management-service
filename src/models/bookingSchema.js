@@ -13,7 +13,6 @@ const bookingSchema = new mongoose.Schema({
   roomNumber: {
     type: String,
     required: true,
-    unique: true,
   },
   amountToPay: {
     type: Number,
