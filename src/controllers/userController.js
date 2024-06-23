@@ -64,9 +64,10 @@ const getAll = async (req, res) => {
 };
 
 const getById = async (req, res) => {
-    try {
+   try {
         const user = req.params.id;
-        let found = await UserSchema.findById(user);
+        let list = await UserSchema.find();
+        let found = list.find(i => i._id ==user)
 
         if (!found) {
             return res.status(404).json({
@@ -81,10 +82,10 @@ const getById = async (req, res) => {
             body: found,
         });
     } catch (error) {
-        if (user === undefined)
-            res.status(500).json({
-                message: error.message,
-            });
+        return res.status(500).json({
+            message: "Internal error.",
+            code: "INTERNAL_SERVER_ERROR",
+        });
     }
 };
 
