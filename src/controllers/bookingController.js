@@ -34,16 +34,18 @@ const bookingListByDate = async (req, res) => {
     try {
     const booking = await BookingSchema.find();
 
-    if (booking.length === 0) {
+    
+    let list = booking.filter(function (i) {
+        return i.dateOfStay[0] >= body.checkin && i.dateOfStay[1] <= body.checkout
+    })
+
+    if (list.length === 0) {
         return res.status(404).json({
             message: "bookings not found.",
             code: "NOT_FOUND_ERROR",
             data: null,
         });
     }
-    let list = booking.filter(function (i) {
-        return i.dateOfStay[0] >= body.checkin && i.dateOfStay[1] <= body.checkout
-    })
 
     return res.status(200).json({
         message: list,
