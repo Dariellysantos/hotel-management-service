@@ -65,7 +65,7 @@ Esta API está sendo escutada na `porta 2323` e para que todas as rotas possam s
 Deletar cadastro usuario                         | DELETE    | `/user/:id`            |
 |Cadastro de reserva     | POST   | `/booking`          |{"name": "GH","emailClient": "fune@email.com.br","roomNumber": "631","amountToPay": 1000.80,"dateOfStay": [12/10/2024",20/10/2024"],"status": "CONFIRMADO"}| 
  Lista de reservar por data das reservas                         | POST    | `/booking`            | {"checkin": "11/10/2024",checkout": "23/10/2024"}
-|Alterar status da reserva por Id | PUT    | ` /booking/:id` |{"status": "CHECK-OUT"}
+|Alterar status da reserva por Id | PUT    | `/booking/:id` |{"status": "CHECK-OUT"}
    
    <br>Criado com por **Darielly Santos** <br>
 [![Linkedin Badge](https://img.shields.io/badge/-Darielly%20Santos-blue?style=flat-square&logo=Linkedin&logoColor=white)](https://www.linkedin.com/in/darielly-santos/)
