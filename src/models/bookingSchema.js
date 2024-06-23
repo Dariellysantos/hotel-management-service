@@ -6,6 +6,10 @@ const bookingSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  emailClient: {
+    type: String,
+    required: true,
+  },
   roomNumber: {
     type: String,
     required: true,
