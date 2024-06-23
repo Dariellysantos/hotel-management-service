@@ -64,10 +64,10 @@ const getAll = async (req, res) => {
 };
 
 const getById = async (req, res) => {
-   try {
+    try {
         const user = req.params.id;
         let list = await UserSchema.find();
-        let found = list.find(i => i._id ==user)
+        let found = list.find(i => i._id == user)
 
         if (!found) {
             return res.status(404).json({
@@ -88,6 +88,47 @@ const getById = async (req, res) => {
         });
     }
 };
+
+const updateUserById = async (req, res) => {
+    try {
+        const userIdParam = req.params.id;
+
+        const list = await UserSchema.find();
+        let find = list.find(i => i._id == userIdParam)
+
+        if (!find) {
+            return res.status(404).json({
+                message: "User not found.",
+                code: "NOT_FOUND_ERROR",
+            });
+        }
+
+        if (find) {
+            find.name = req.body.name || find.name;
+            find.email 
+            find.password = req.body.password || find.password;
+            find.birthday = req.body.birthday || find.birthday;
+            find.city = req.body.city || find.city;
+            find.country = req.body.country || find.country;
+        }
+
+
+
+        const savedUser = await find.save();
+        return res.status(200).json({
+            message: " User updated successfully",
+            savedUser,
+        });
+    } catch (err) {
+
+        console.log(err);
+        return res.status(500).json({
+            message: "Internal error.",
+            code: "INTERNAL_SERVER_ERROR",
+        });
+
+    }
+}
 
 const deleteById = async (req, res) => {
     try {
@@ -118,5 +159,6 @@ module.exports = {
     createUser,
     getAll,
     getById,
-    deleteById
+    updateUserById,
+    deleteById,
 };
